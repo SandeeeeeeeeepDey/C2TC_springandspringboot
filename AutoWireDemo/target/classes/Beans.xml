@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <bean id="heartHuman" class="com.cg.autowiring.Heart">
+		   <property name="noOfHeart" value="1"/>
+		   <property name="ownerName" value="Human"/>
+	   </bean>
+	   <bean id="heartOctopus" class="com.cg.autowiring.Heart">
+		   <property name="noOfHeart" value="3"/>
+		   <property name="ownerName" value="Vilgax"/>
+	   </bean>
+	   <bean id="heartDavyJones" class="com.cg.autowiring.Heart">
+		   <property name="noOfHeart" value="0"/>
+		   <property name="ownerName" value="Davy Jones"/>
+	   </bean>
+	   
+       <bean id="body" class="com.cg.autowiring.Body" autowire="byType" />
+       
+       <!-- 3:Autowire Constructor searches for attribute object in bean.
+       <bean id="heartHuman" class="com.cg.autowiring.Heart" />
+       <bean id="body" class="com.cg.autowiring.Body" autowire="constructor" />
+       -->
+       
+       <!-- 3:Autowire byType only searches for same type and not the name/id
+       <bean id="heartHuman" class="com.cg.autowiring.Heart" />
+       <bean id="body" class="com.cg.autowiring.Body" autowire="byType" />
+       -->
+       
+       <!-- 2:Using autowire ByName. (Name of property should be same in bean id as in the class.
+       
+       <bean id="heart" class="com.cg.autowiring.Heart" />
+       <bean id="body" class="com.cg.autowiring.Body" autowire="byName" />
+       -->
+        
+        <!-- 1:Using proprerty tag.
+        
+        <bean id="body" class="com.cg.autowiring.Body" >
+		   	<property name="heart" ref="heartw" />
+	   	</bean> 
+	   	-->
+</beans>

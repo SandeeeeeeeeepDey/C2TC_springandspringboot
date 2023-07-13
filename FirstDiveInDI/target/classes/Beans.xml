@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="cheat" class="com.cg.cheatingexamwithdi.Cheat" />
+    <bean class="com.cg.cheatingexamwithdi.StudentOne" id="sOne">
+		<property name="chit" ref="cheat"/>
+	</bean>
+	<bean class="com.cg.cheatingexamwithdi.StudentTwo" id="sTwo">
+		<property name="chit" ref="cheat"/>
+	</bean>
+
+</beans>
