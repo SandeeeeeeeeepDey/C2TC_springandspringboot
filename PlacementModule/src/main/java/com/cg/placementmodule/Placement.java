@@ -15,7 +15,7 @@ public class Placement {
 	
 	@Id
 	// Properties
-	private int id;
+	private Long id;
 	private String name;
 	private String college;
 	private LocalDate date;
@@ -28,7 +28,7 @@ public class Placement {
 	}
 
 	// Constructors (Parameterized)
-	public Placement(int id, String name, String college, LocalDate date, String qualification, int year) {
+	public Placement(Long id, String name, String college, LocalDate date, String qualification, int year) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,11 +39,11 @@ public class Placement {
 	}
 
 	// Getters Setters
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

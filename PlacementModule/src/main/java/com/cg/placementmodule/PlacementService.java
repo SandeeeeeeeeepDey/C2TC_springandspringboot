@@ -1,5 +1,7 @@
 package com.cg.placementmodule;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,16 +22,19 @@ public class PlacementService {
 	}
 	
 	// Get service
-	public Placement searchPlacement(int id) {
+	public Placement searchPlacement(long id) {
 		return placementRepository.findById(id).get();
 		
 	}
 	
 	// Delete service
-	public void cancelPlacement(int id) {
+	public void cancelPlacement(long id) {
 		placementRepository.deleteById(id);
 		
 		
+	}
+	public List<Placement> listAll(){
+		return placementRepository.findAll();
 	}
 	
 	

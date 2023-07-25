@@ -1,5 +1,6 @@
 package com.cg.placementmodule;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 // Placement Controller class. For defining Transaction specific methods.
 @RestController
@@ -38,7 +40,7 @@ public class PlacementController {
 	
 	// Retrieve/searchPlacement Controller. #Get Transaction
 	@GetMapping("/placements/{id}")
-	public ResponseEntity<Placement> searchPlacement(@PathVariable int id){
+	public ResponseEntity<Placement> searchPlacement(@PathVariable long id){
 		
 		try{
 			Placement placement = service.searchPlacement(id);
@@ -50,9 +52,14 @@ public class PlacementController {
 		}
 	}
 	
+	@GetMapping("/placements")
+	public List<Placement> list(){
+		return service.listAll();
+	}
+	
 	// Update/updatePlacement Controller. #Put Transaction
 	@PutMapping("/placements/{id}")
-	public ResponseEntity<?> updatePlacement(@RequestBody Placement placement, @PathVariable int id)
+	public ResponseEntity<?> updatePlacement(@RequestBody Placement placement, @PathVariable long id)
 		{
 		try
 		{
@@ -68,7 +75,7 @@ public class PlacementController {
 	
 	// Delete/deletePlacement Controller. #Delete Transaction
 	@DeleteMapping("/placements/{id}")
-	public boolean cancelPlacement(@PathVariable int id) {
+	public boolean cancelPlacement(@PathVariable long id) {
 		try{
 			Placement placement = service.searchPlacement(id); // first we verify if id is present
 			service.cancelPlacement(id); // then we delete it

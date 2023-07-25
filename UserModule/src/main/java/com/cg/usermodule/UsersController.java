@@ -1,5 +1,6 @@
 package com.cg.usermodule;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 
 
@@ -55,6 +57,11 @@ public class UsersController {
 		} catch (NoSuchElementException e) {
 			return new ResponseEntity<Users>(HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@GetMapping("/user")
+	public List<Users> list(){
+		return service.listAll();
 	}
 	
 	@PostMapping("user/logout")
